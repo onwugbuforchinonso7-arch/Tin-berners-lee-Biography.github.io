@@ -1,0 +1,85 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    text-align: center;
+    padding: 80px;
+  margin: 0;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Outer glowing effect */
+  box-shadow: inset 0 0 100px rgba(0, 255, 255, 0.5), 
+              0 0 50px rgba(0, 255, 255, 0.3);
+
+
+}
+
+/* Container to give 3D perspective depth */
+.book-container {
+  width: 30%;
+  height: 350px;
+  position: relative;
+  perspective: 1000px; /* Enables 3D space effect */
+  cursor: pointer;
+}
+
+/* Base style for both the cover and the inside page */
+.book-cover, .book-page {
+  width: 100%;
+  height: 60vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  color: white;
+  animation: pulse-glow 2s infinite alternate;
+}
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.749), 0 0 10px rgba(0, 255, 255, 0.645), 0 0 20px rgba(0, 255, 255, 0.716);
+  }
+  100% {
+    box-shadow: 0 0 15px aqua, 0 0 30px aquamarine, 0 0 60px white;
+  }
+
+
+
+}
+
+/* The underlying inside page */
+.book-page {
+  background: #f5f5f0;
+  color: #333;
+  z-index: 1;
+}
+
+/* The front cover */
+.book-cover {
+  background: #8b0000; /* Dark red hardcover */
+  color: #fff;
+  z-index: 2;
+  
+  /* Hinge anchor: Makes the rotation hinge on the left edge */
+  transform-origin: left center; 
+  
+  /* Smooth transformation transition */
+  transition: transform 1s ease-in-out; 
+}
+
+/* The Opening Effect on Hover */
+.book-container:hover .book-cover {
+  /* Rotates the cover out into the 3D space */
+  transform: rotateY(-140deg); 
+}
+span{
+    color: aqua;
+}
